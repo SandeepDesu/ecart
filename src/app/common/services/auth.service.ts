@@ -7,9 +7,7 @@ import { LOCAL_STORAGE_KEYS } from '@common/constants/app.constants';
 import { setValueToLocalStorage } from '@common/utils/web.utils';
 import { User } from '@common/models/users';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class AuthService {
 
   constructor(private http: HttpClient) { }

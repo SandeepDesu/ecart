@@ -7,9 +7,7 @@ import {
 import { getValueFromLocalStorage } from '@common/utils/web.utils';
 import { LOCAL_STORAGE_KEYS } from '@common/constants/app.constants';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class HttpInterceptorService implements HttpInterceptor {
   intercept(req: HttpRequest<any>, next: HttpHandler) {
     // Get the auth token from the service.

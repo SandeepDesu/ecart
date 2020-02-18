@@ -12,6 +12,11 @@ import { LoginComponent } from './login/login.component';
 
 import { HttpInterceptorService } from '@common/services/http-interceptor.service';
 import { HttpWrapperService } from '@common/services/http-wrapper.service';
+import { AuthService } from '@common/services/auth.service';
+import { BookService } from '@common/services/book.service';
+import { UsersService } from '@common/services/users.service';
+
+import { UserAuthGuardGuard } from '@common/guards/user-auth-guard.guard';
 
 @NgModule({
   declarations: [
@@ -28,7 +33,11 @@ import { HttpWrapperService } from '@common/services/http-wrapper.service';
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorService, multi: true },
-    HttpWrapperService
+    HttpWrapperService,
+    UserAuthGuardGuard,
+    AuthService,
+    BookService,
+    UsersService
   ],
   bootstrap: [AppComponent]
 })

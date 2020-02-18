@@ -4,9 +4,7 @@ import { Book } from '@common/models/book';
 import { BOOKS_URL } from '@common/constants/api.constants';
 import { Observable } from 'rxjs';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class BookService {
 
   constructor(private http: HttpClient) { }

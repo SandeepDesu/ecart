@@ -5,9 +5,7 @@ import { Observable } from 'rxjs';
 import { USERS_URL } from '@common/constants/api.constants';
 import { User } from '@common/models/users';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class UsersService {
 
   constructor(private http: HttpClient) { }
