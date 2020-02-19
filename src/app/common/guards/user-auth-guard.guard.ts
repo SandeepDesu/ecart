@@ -9,10 +9,14 @@ export class UserAuthGuardGuard implements CanActivate {
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    var userDetails = JSON.parse(getValueFromLocalStorage(LOCAL_STORAGE_KEYS.USER));
-    if (userDetails && userDetails.role === 'user') {
-      return true;
+    const userDetails = getValueFromLocalStorage(LOCAL_STORAGE_KEYS.USER);
+    let isValidUser = false;
+    if (userDetails !== 'undefined') {
+      const user = JSON.parse(userDetails);
+      if (user && user.role === 'user') {
+        isValidUser =  true;
+      }
     }
-    return false;
+    return isValidUser;
   }
 }

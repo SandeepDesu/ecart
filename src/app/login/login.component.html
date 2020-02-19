@@ -7,23 +7,28 @@
         <div class="alert alert-danger" role="alert" *ngIf="isError">
             This is a danger alert—check it out!
         </div>
-        <form>
+        <form (ngSubmit)="signIn()" #signInForm="ngForm">
             <div class="form-row">
                 <div class="form-group col-md-6">
-                    <label for="inputEmail4">UserName</label>
-                    <input type="email" class="form-control" id="email" placeholder="UserName" name="username"
-                        [(ngModel)]="user.username">
+                    <label for="username">UserName</label>
+                    <input type="email" class="form-control" placeholder="UserName" id="username" name="username"
+                        [(ngModel)]="user.username" #username="ngModel" required>
+                    <div [hidden]="username.valid || username.pristine" class="alert alert-danger">
+                        Email is required
+                    </div>
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-group col-md-6">
-                    <label for="inputPassword4">Password</label>
-                    <input type="password" class="form-control" id="password" placeholder="Password" name="password"
-                        [(ngModel)]="user.password">
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control" placeholder="Password" id="password" name="password"
+                        [(ngModel)]="user.password" required #password="ngModel">
+                    <div [hidden]="password.valid || password.pristine" class="alert alert-danger">
+                        Password is required
+                    </div>
                 </div>
             </div>
-
-            <button type="submit" class="btn btn-primary" (click)="signIn()">Sign In</button>
+            <button type="submit" class="btn btn-primary" [disabled]="!signInForm.form.valid">Sign In</button>
         </form>
     </div>
 </div>
