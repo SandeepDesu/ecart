@@ -2,3 +2,8 @@ export const LOCAL_STORAGE_KEYS = {
     TOKEN: 'token',
     USER: 'user'
 };
+
+export const USER_ROLES = {
+    ADMIN: 'admin',
+    USER: 'user'
+}

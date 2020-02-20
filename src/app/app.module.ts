@@ -16,7 +16,8 @@ import { AuthService } from '@common/services/auth.service';
 import { BookService } from '@common/services/book.service';
 import { UsersService } from '@common/services/users.service';
 
-import { UserAuthGuardGuard } from '@common/guards/user-auth-guard.guard';
+import { UserAuthGuard } from '@common/guards/user-auth.guard';
+import { AdminAuthGuard } from '@common/guards/admin-auth.guard';
 
 @NgModule({
   declarations: [
@@ -28,13 +29,13 @@ import { UserAuthGuardGuard } from '@common/guards/user-auth-guard.guard';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule,
-    UserModule
+    FormsModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorService, multi: true },
     HttpWrapperService,
-    UserAuthGuardGuard,
+    UserAuthGuard,
+    AdminAuthGuard,
     AuthService,
     BookService,
     UsersService
