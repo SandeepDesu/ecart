@@ -1,0 +1,38 @@
+<form (ngSubmit)="onSubmit()" [formGroup]="bookForm" novalidate>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="name">Name</label>
+            <input type="text" class="form-control" id="name" placeholder="name" formControlName="name"
+                [ngClass]="{'is-invalid': submitted && f.name.errors}">
+        </div>
+        <div class="form-group col-md-6">
+            <label for="imageUrl">ImageUrl</label>
+            <input type="text" class="form-control" id="imageUrl" placeholder="ImageUrl"
+                formControlName="imageUrl" [ngClass]="{'is-invalid': submitted && f.imageUrl.errors}">
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="currencyIn">CurrencyIn</label>
+            <input type="text" class="form-control" id="currencyIn" placeholder="CurrencyIn"
+                formControlName="currencyIn" [ngClass]="{'is-invalid': submitted && f.currencyIn.errors}">
+        </div>
+        <div class="form-group col-md-6">
+            <label for="cost">Cost</label>
+            <input type="text" class="form-control" id="cost" placeholder="Cost" formControlName="cost"
+                [ngClass]="{'is-invalid': submitted && f.cost.errors}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="description">Description</label>
+        <input type="text" class="form-control" id="description" placeholder="Description"
+            formControlName="description" [ngClass]="{'is-invalid': submitted && f.description.errors}">
+    </div>
+    <div class="form-group" formArrayName="author"
+        *ngFor="let author of bookForm.get('author').controls; let i = index;">
+        <label for="author">Author</label>
+        <input type="text" class="form-control" id="author" placeholder="Author" [formControlName]="i">
+    </div>
+    <button type="button" class="btn btn-warning mr-5" (click)="addItem()">Add Author</button>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
