@@ -41,7 +41,7 @@ export class BookFormComponent implements OnInit {
       imageUrl: book.imageUrl
     });
     for (let i = 0; i < book.author.length; i++) {
-      this.authors.push(new FormControl(book.author[i]));
+      this.authors.push(this.formBuilder.control(book.author[i]));
     }
   }
 
