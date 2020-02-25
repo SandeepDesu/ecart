@@ -4,7 +4,6 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
-import { UserModule } from './user/user.module';
 
 import { AppComponent } from './app.component';
 import { SignupComponent } from './signup/signup.component';
