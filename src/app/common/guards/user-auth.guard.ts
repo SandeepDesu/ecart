@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
-import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree } from '@angular/router';
+import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, CanLoad, UrlSegment, Route } from '@angular/router';
 import { Observable } from 'rxjs';
 import { getValueFromLocalStorage } from '@common/utils/web.utils';
 import { LOCAL_STORAGE_KEYS, USER_ROLES } from '@common/constants/app.constants';
 
 @Injectable()
-export class UserAuthGuard implements CanActivate {
+export class UserAuthGuard implements CanActivate, CanLoad {
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
@@ -18,5 +18,9 @@ export class UserAuthGuard implements CanActivate {
       }
     }
     return isValidUser;
+  }
+
+  canLoad(route: Route, segments: UrlSegment[]): Observable<boolean> | Promise<boolean> | boolean {
+    return true;
   }
 }

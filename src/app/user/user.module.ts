@@ -7,10 +7,12 @@ import { HeaderComponent } from './components/header/header.component';
 import { BookListComponent } from './components/book-list/book-list.component';
 import { CartService } from './services/cart.service';
 import { BookDetailsComponent } from './components/book-details/book-details.component';
+import { UserAuthGuard } from '@common/guards/user-auth.guard';
 const routes: Routes = [
   {
     path: '',
     component: DashboardComponent,
+    canActivate: [UserAuthGuard],
     children: [
       { path: '', component: BookListComponent },
     ]
